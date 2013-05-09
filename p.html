@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>primzahlen</title>
+</head>
+<body></body>
+<script>
+document.body.innerHTML = (function (x) {
+	var v, r = [],
+		a = (function (x) {
+			var i = 3, a = [2];
+			for (; i <= x; i += 2)
+				a.push(i);
+			return a;
+		}(x));
+	while (a[0] < Math.sqrt(x)) {
+		v = a.shift();
+		r.push(v);
+		a = a.filter(function (n) {
+			return n % v !== 0;
+		});
+	}
+	return r.concat(a).join('<br>');
+}(9999999));
+</script>
+</html>
